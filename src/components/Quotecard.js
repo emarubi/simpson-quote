@@ -1,20 +1,27 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import './Quotecard.css';
 
-function Quotecard() {
+function Quotecard(props) {
     return (
         <figure className="QuoteCard">
             <img
-                src="https://pm1.narvii.com/7070/aeaeadea89d89327a8e5f4f83d10272dc337425fr1-1200-1200v2_128.jpg"
-                alt="Nelson Muntz"/>
+                src={props.image}
+                alt={props.character}/>
             <figcaption>
                 <blockquote>
-                    Shoplifting is a victimless crime, like punching someone in the dark.
+                   {props.quote}
                 </blockquote>
-                <cite>Nelson Muntz</cite>
+                <cite>{props.characterFirstName + ' ' + props.characterLastName}</cite>
             </figcaption>
         </figure>
     )
+}
+
+Quotecard.propTypes = {
+    characterFirstName: PropTypes.string.isRequired,
+    characterLastName: PropTypes.string.isRequired,
 }
 
 export default Quotecard;
